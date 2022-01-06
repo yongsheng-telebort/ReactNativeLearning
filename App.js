@@ -1,31 +1,18 @@
-import { StyleSheet, Text, View, Button, Alert } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomeScreen from "./screens/Home";
+import InfoScreen from "./screens/Info";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to React Native!</Text>
-      <Button
-        title="Start"
-        style={styles.button}
-        onPress={() => Alert.alert("Let's go")}
-      ></Button>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Info" component={InfoScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "lightblue",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-  },
-  button: {
-    fontSize: 24,
-    color: "white",
-    backgroundColor: "blue",
-  },
-});
